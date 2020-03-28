@@ -7,7 +7,7 @@ Created on Sat Mar  7 14:26:47 2020
 
 # 匯入pygame模組
 import pygame
-
+import random
 # 定義一些會用到的顏色
 # 常數使用大寫
 BLACK    = (   0,   0,   0)
@@ -32,7 +32,7 @@ clock = pygame.time.Clock()
 
 x = 0
 y = 0
-
+color = (0,0,0)
 # -------- 主要的程式迴圈 -----------
 while not done:
     # --- 事件迴圈 event loop
@@ -59,8 +59,10 @@ while not done:
         y += 1
     if key[pygame.K_UP]:
         y -= 1
+    if key[pygame.K_r]:
+        color = (random.randrange(255),random.randrange(255),random.randrange(255))
             
-    pygame.draw.rect(screen, BLACK, [x,y, 10,10])
+    pygame.draw.rect(screen, color, [x,y, 10,10])
 
     
 
