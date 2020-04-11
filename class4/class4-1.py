@@ -29,12 +29,15 @@ clock = pygame.time.Clock()
 # 載入圖片
 background = pygame.image.load("saturn_family1.jpg")
 player = pygame.image.load("playerShip1_orange.png")
+sound = pygame.mixer.Sound("laser5.ogg")
 # -------- 主要的程式迴圈 -----------
 while not done:
     # --- 事件迴圈 event loop
     for event in pygame.event.get(): # 從事件list中抓取事件
         if event.type == pygame.QUIT: # 當使用者按下結束
             done = True # 將done變數設為True-->while迴圈將會結束
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            sound.play()
 
     # --- 程式的運算與邏輯
     
