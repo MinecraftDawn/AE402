@@ -5,7 +5,10 @@ Created on Sat Apr 11 15:06:05 2020
 @author: eric
 """
 
-a = [1,4,2,7,8]
+import time
 
-for val in a:
-    print(val)
+sTime = time.time()
+time.sleep(3)
+eTime = time.time()
+
+print(eTime - sTime)

@@ -27,7 +27,7 @@ done = False
 
 # 創造一個clock控制畫面更新速度
 clock = pygame.time.Clock()
-
+score = 0
 boxes = []
 for _ in range(10):
     x = random.randrange(size[0])
@@ -42,7 +42,7 @@ while not done:
             done = True # 將done變數設為True-->while迴圈將會結束
     # --- 程式的運算與邏輯
     
-    
+    pygame.display.set_caption("目前分數" + str(score))
     # --- 繪圖的程式碼
     #       先將畫面塗滿底色(將原有畫面清掉)
     #       繪圖的程式要寫在這行後面，不然會被這行清掉
@@ -54,6 +54,10 @@ while not done:
         y = boxes[i][1]
         if (x <= x1+32 <= x+32 or x <= x1 <= x+32) and \
         (y <= y1+32 <= y+32 or y <= y1 <= y+32):
+            if boxes[i][2]:
+                score += 1
+                if score == 10:
+                    done = True
             boxes[i][2] = False
     
     pygame.draw.rect(screen, WHITE, [x1,y1,32,32])
