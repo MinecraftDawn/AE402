@@ -65,7 +65,7 @@ for i in range(10):
         blocks.add(block)
         allSprits.add(block)
 
-player = Block(WHITE, 50, 50)
+player = Block(WHITE, 80, 80)
 allSprits.add(player)
 
 ball = Ball(0, 300,300 , 30, WHITE)
