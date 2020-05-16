@@ -132,7 +132,7 @@ while running:
     buttons = pygame.mouse.get_pressed()  #檢查滑鼠按鈕
     if buttons[0]:  #按滑鼠左鍵後球可移動
         playing = True
-    if playing == True:  #遊戲進行中
+    if playing:  #遊戲進行中
         """
         screen.blit(background, (0,0))  #清除繪圖視窗
         fail = ball.update()  #移動球體
@@ -148,10 +148,11 @@ while running:
             if len(bricks) == 0:  #所有磚塊消失
                 gameover("恭喜，挑戰成功！")
         hitpad = pygame.sprite.collide_rect(ball, pad)  #檢查球和滑板碰撞
-        """
+        
         if hitpad:  #球和滑板發生碰撞
             soundpad.play()  #球撞滑板聲
             ball.bounceup()  #球反彈
+        """
         allsprite.draw(screen)  #繪製所有角色
         msgstr = "得分：" + str(score)
     msg = font.render(msgstr, 1, (255,0,255))
