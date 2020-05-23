@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat May 16 15:15:04 2020
-
-@author: eric
-"""
 # 匯入pygame模組
 import pygame
 
@@ -32,6 +26,7 @@ class Snake():
         self.x = 0
         self.y = 0
         self.dir = 0
+        self.eatFood = 0
         
         for i in range(length):
             self.x += SnakeBody.SIZE
@@ -56,8 +51,14 @@ class Snake():
         self.group.add(head)
         self.queue.append(head)
         
-        tail = self.queue.pop(0)
-        self.group.remove(tail)
+        if self.eatFood > 0:
+            self.eatFood -= 1
+        else:
+            tail = self.queue.pop(0)
+            self.group.remove(tail)
+            
+        
+        
         
     # 改變方向
     def changeDir(self, pressed):
@@ -71,6 +72,21 @@ class Snake():
             self.dir = 1
         elif pressed[pygame.K_RIGHT]:
             self.dir = 0
+        
+    def 有沒有吃到食物(self, foodGroup):
+        eatFood = pygame.sprite.groupcollide(self.group, foodGroup, False, True)
+        if eatFood:
+            self.eatFood += len(list(eatFood.values())[0] * 5)
+    
+class Food(pygame.sprite.Sprite):
+    SIZE = 20
+    def __init__(self, color, x, y):
+        super().__init__()
+        self.image = pygame.Surface([self.SIZE, self.SIZE])
+        self.image.fill(color)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        
 
-    def append(self):
-        pass
+
