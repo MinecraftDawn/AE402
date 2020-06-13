@@ -19,6 +19,16 @@ class SnakeBody(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         
+class Food(pygame.sprite.Sprite):
+    SIZE = 20
+    def __init__(self, color, x, y):
+        super().__init__()
+        self.image = pygame.Surface([self.SIZE, self.SIZE])
+        self.image.fill(color)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        
 class Snake():
     def __init__(self, length, windowSize):
         self.group = pygame.sprite.Group()
@@ -89,15 +99,6 @@ class Snake():
         hits = pygame.sprite.spritecollide(self.queue[-1], tmp, False)
         return bool(hits)
     
-class Food(pygame.sprite.Sprite):
-    SIZE = 20
-    def __init__(self, color, x, y):
-        super().__init__()
-        self.image = pygame.Surface([self.SIZE, self.SIZE])
-        self.image.fill(color)
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
         
 
 
